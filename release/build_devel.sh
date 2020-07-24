@@ -14,11 +14,10 @@ TARGET_DIR=/data/openpilot
 
 ln -sf $TARGET_DIR /data/pythonpath
 
-export GITHUB_REPO="jyoung8607/openpilot.git"
-export GIT_COMMITTER_NAME="Jason Young"
-export GIT_COMMITTER_EMAIL="jyoung8607@gmail.com"
-export GIT_AUTHOR_NAME="Jason Young"
-export GIT_AUTHOR_EMAIL="jyoung8607@gmail.com"
+export GIT_COMMITTER_NAME="Vehicle Researcher"
+export GIT_COMMITTER_EMAIL="user@comma.ai"
+export GIT_AUTHOR_NAME="Vehicle Researcher"
+export GIT_AUTHOR_EMAIL="user@comma.ai"
 export GIT_SSH_COMMAND="ssh -i /tmp/deploy_key"
 
 echo "[-] Setting up repo T=$SECONDS"
@@ -26,7 +25,7 @@ if [ ! -d "$TARGET_DIR" ]; then
   mkdir -p $TARGET_DIR
   cd $TARGET_DIR
   git init
-  git remote add origin git@github.com:$GITHUB_REPO
+  git remote add origin git@github.com:commaai/openpilot.git
 fi
 
 echo "[-] fetching public T=$SECONDS"
@@ -96,7 +95,7 @@ popd
 
 if [ ! -z "$CI_PUSH" ]; then
   echo "[-] Pushing to $CI_PUSH T=$SECONDS"
-  git remote set-url origin git@github.com:$GITHUB_REPO
+  git remote set-url origin git@github.com:commaai/openpilot.git
   git push -f origin master-ci:$CI_PUSH
 fi
 
